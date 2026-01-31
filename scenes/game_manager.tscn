@@ -8,8 +8,15 @@
 
 [node name="gameManager" type="Node2D"]
 script = ExtResource("1_glms7")
+pice = ExtResource("2_ternb")
+pawn = ExtResource("3_jdad8")
+castle = ExtResource("3_q8mjp")
 
 [node name="gameBoard" parent="." instance=ExtResource("1_hwd4i")]
+
+[node name="Camera2D" type="Camera2D" parent="gameBoard"]
+offset = Vector2(256, 128)
+zoom = Vector2(2, 2)
 
 [node name="Hud" parent="." instance=ExtResource("3_udu3i")]
 

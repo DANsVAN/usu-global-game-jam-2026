@@ -3,11 +3,19 @@ using System;
 
 public partial class Piece : Node2D
 {	
+	[Export]
 	public int cost = 1;
+	[Export]
 	public int movement = 1;
 	public int move_dir = 1;
+	[Export]
 	public	int damage = 1;
+	[Export]
 	public 	int HP = 1;
+	[Export]
+	public int thorns = 0;
+	
+	
 	public bool can_move = true;
 	public bool tryed_to_move = true;
 	// Called when the node enters the scene tree for the first time.
@@ -50,11 +58,11 @@ public partial class Piece : Node2D
 		}
 	}
 	public int[] get_move(){
-		int[] next_spot = {1*move_dir, 0};
+		int[] next_spot = {movement * move_dir, 0};
 		return next_spot;
 	}
 	public int[] get_atack(){
-		int[] next_spot = {1*move_dir, 0};
+		int[] next_spot = {movement * move_dir, 0};
 		return next_spot;
 	}
 	

@@ -24,6 +24,9 @@ public partial class GameManager : Node2D
 	public bool blue_win=false;
 	
 	[Export] public PackedScene WorldScene;
+	[Export] public PackedScene pice; // Drag your .tscn here in the Inspector
+	[Export] public PackedScene pawn; // Drag your .tscn here in the Inspector
+	[Export] public PackedScene castle; // Drag your .tscn here in the Inspector
 	// Called when the node enters the scene tree for the first time.
 	// public void LoadWorld()
 	// {
@@ -117,7 +120,7 @@ public partial class GameManager : Node2D
 					if (next_spot[0] < 8 && next_spot[0] >= 0 && next_spot[1] < 8 && next_spot[1] >= 0 ){
 						if (!(Board.gameState[next_spot[0],next_spot[1]] is Piece)){
 							if (blue_teame_money >= 1){
-								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild();
+								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(pawn);
 								Board.gameState[next_spot[0],next_spot[1]].init_data(1);
 								Board.update_pos();
 								blue_teame_money -= Board.gameState[next_spot[0],next_spot[1]].cost;
@@ -132,7 +135,7 @@ public partial class GameManager : Node2D
 					if (next_spot[0] < 16 && next_spot[0] >= 8 && next_spot[1] < 8 && next_spot[1] >= 0 ){
 						if (!(Board.gameState[next_spot[0],next_spot[1]] is Piece)){
 							if (red_teame_money >= 1){
-								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild();
+								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(castle);
 								Board.gameState[next_spot[0],next_spot[1]].init_data(-1);
 								Board.update_pos();
 								red_teame_money -= Board.gameState[next_spot[0],next_spot[1]].cost;
