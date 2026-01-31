@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cswp65kcfcv16"]
+[gd_scene load_steps=5 format=3 uid="uid://cswp65kcfcv16"]
 
 [ext_resource type="Texture2D" uid="uid://baxndqk0ecato" path="res://assets/Pawn.png" id="1_8j20b"]
+[ext_resource type="Script" uid="uid://ce8a814323id8" path="res://scenes/ShopStall.cs" id="1_i3cu3"]
 [ext_resource type="Texture2D" uid="uid://1vta0xrnmbad" path="res://assets/Tile_Bace.png" id="2_xoh7t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xoh7t"]
@@ -20,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
+script = ExtResource("1_i3cu3")
 
 [node name="Cost" type="Label" parent="."]
 z_index = 1
