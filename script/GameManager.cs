@@ -61,7 +61,7 @@ public partial class GameManager : Node2D
 			}
 		}
 		int[] possibleColAndRow = FindPossibleRowAndCall();
-		GD.Print("row " + possibleColAndRow[0]+ " col " + possibleColAndRow[1]);
+		// GD.Print("row " + possibleColAndRow[0]+ " col " + possibleColAndRow[1]);
 		if(Input.IsActionJustPressed("left_click")){
 			if (is_blue_teame_turn) {
 				int[] next_spot = FindPossibleRowAndCall();
