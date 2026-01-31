@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://3mh1yfkglmsf"]
+
+[ext_resource type="Script" uid="uid://c2tcbd0c8ik12" path="res://script/Hud.cs" id="1_wfueu"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_wfueu")
+
+[node name="red" type="Label" parent="."]
+visibility_layer = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 34.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+metadata/_edit_use_anchors_ = true
+
+[node name="blue" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 24
