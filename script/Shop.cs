@@ -34,6 +34,17 @@ public partial class Shop : CanvasLayer
 			if (child.id == currentTogledId){
 				gameManager.selectedPiceType = item;
 			}
+			// 1. Get the node
+			Piece newItem =  item.Instantiate<Piece>();
+			Sprite2D sourceSprite = newItem.GetNode<Sprite2D>("Sprite2D");
+			
+			// // 2. Pull the texture into a variable
+			Texture2D grabbedTexture = sourceSprite.Texture;
+			Sprite2D ShopingStallSprite = child.GetChild(2) as Sprite2D;
+			ShopingStallSprite.Texture = grabbedTexture;
+			// // 3. Apply it to something else
+			// GetNode<Sprite2D>("AnotherSprite").Texture = grabbedTexture;
+
 		}
 	}
 
