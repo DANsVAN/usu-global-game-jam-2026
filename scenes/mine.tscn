@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4gtqovn4uoug"]
+
+[ext_resource type="PackedScene" uid="uid://bi38mejehco2a" path="res://scenes/Piece.tscn" id="1_yym1a"]
+[ext_resource type="Texture2D" uid="uid://ch8q3ou2xtqlj" path="res://assets/mine.png" id="2_m55k0"]
+
+[node name="mine" instance=ExtResource("1_yym1a")]
+cost = 3
+movement = 0
+add_value = 1
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_m55k0")

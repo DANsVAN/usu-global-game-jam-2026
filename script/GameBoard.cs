@@ -44,6 +44,7 @@ public partial class GameBoard : TileMapLayer
 		update_can_move();
 		move_all_pices();
 		do_attacks();
+		add_value();
 		update_pos();
 		if (gamemanger.game_is_over)
 		{
@@ -169,5 +170,24 @@ public partial class GameBoard : TileMapLayer
 				}
 			}
 		}
+	}
+	
+	public void add_value(){
+		gamemanger = GetParent<GameManager>();
+		GameManager parent = gamemanger;
+		for ( int col = 0; col < 8;  col ++){
+			for (int row = 0; row < 16; row ++){
+				Piece pice = gameState[row,col];
+				if (pice is Piece){
+					if (pice.move_dir>0){
+						parent.blue_teame_money += pice.add_value;
+					}else{
+						parent.red_teame_money += pice.add_value;
+					}
+				
+				}
+			}
+		}
+		GD.Print(parent.blue_teame_money);
 	}
 }
