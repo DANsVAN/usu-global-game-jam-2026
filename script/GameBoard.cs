@@ -44,8 +44,9 @@ public partial class GameBoard : TileMapLayer
 		update_can_move();
 		move_all_pices();
 		do_attacks();
-		add_value();
 		update_pos();
+		add_value();
+
 		gamemanger.get_5_rand_cards();
 		if (gamemanger.game_is_over)
 		{
@@ -189,6 +190,6 @@ public partial class GameBoard : TileMapLayer
 				}
 			}
 		}
-		GD.Print(parent.blue_teame_money);
+		// GD.Print(parent.blue_teame_money);
 	}
 }

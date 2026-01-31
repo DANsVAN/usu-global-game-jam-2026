@@ -91,15 +91,15 @@ public partial class GameManager : Node2D
 	public override void _Process(double delta){
 		if (game_is_over){
 			if (blue_win&&!red_win){ // blue win
-				GD.Print("Blue Win Press Space To Play Again");
+				// GD.Print("Blue Win Press Space To Play Again");
 				ShowEndScreen("Blue Win Press Space To Play Again");
 			}
 			if (red_win&&!blue_win){ // red win
-				GD.Print("Red Win Press Space To Play Again");
+				// GD.Print("Red Win Press Space To Play Again");
 				ShowEndScreen("Red Win Press Space To Play Again");
 			}
 			if (red_win&&blue_win){ // game was a tie
-				GD.Print("Game Was A Tie Press Space To Play Again");
+				// GD.Print("Game Was A Tie Press Space To Play Again");
 				ShowEndScreen("Game Was A Tie Press Space To Play Again");
 			}
 			
@@ -111,7 +111,6 @@ public partial class GameManager : Node2D
 				atack_time_left -= delta;
 			}else if (!is_red_teame_turn && !is_blue_teame_turn){
 				Board.kill_0_hp();
-				Board.add_value();
 				is_red_teame_turn = false;
 				is_blue_teame_turn = true;
 				blue_teame_money += 5;

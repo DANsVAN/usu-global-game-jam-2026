@@ -26,9 +26,9 @@ public partial class Shop : CanvasLayer
 		foreach (ShopStall child in Children)
 		{		
 			PackedScene item = packedScenes[child.id];
-			GD.Print(item);
-			GD.Print(child.id);
-			GD.Print(item.Instantiate<Piece>().cost);
+			// GD.Print(item);
+			// GD.Print(child.id);
+			// GD.Print(item.Instantiate<Piece>().cost);
 			childCost = child.GetChild(0) as Label;
 			childCost.Text = "Cost: " + item.Instantiate<Piece>().cost;
 			if (child.id == currentTogledId){
