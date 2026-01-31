@@ -8,6 +8,7 @@ public partial class Piece : Node2D
 	public	int damage = 1;
 	public 	int HP = 1;
 	public bool can_move = true;
+	public bool tryed_to_move = true;
 	// Called when the node enters the scene tree for the first time.
 
 
@@ -40,6 +41,12 @@ public partial class Piece : Node2D
 	}
 	public void init_data(int m_dir){
 		move_dir = m_dir;
+		if (move_dir > 0){
+			Modulate = new Color(0.0f, 0.0f, 1.0f);
+		}
+		if (move_dir < 0){
+			Modulate = new Color(1.0f, 0.0f, 0.0f);
+		}
 	}
 	public int[] get_move(){
 		int[] next_spot = {1*move_dir, 0};
