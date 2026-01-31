@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://cswp65kcfcv16"]
+
+[ext_resource type="Texture2D" uid="uid://baxndqk0ecato" path="res://assets/Pawn.png" id="1_8j20b"]
+[ext_resource type="Texture2D" uid="uid://1vta0xrnmbad" path="res://assets/Tile_Bace.png" id="2_xoh7t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xoh7t"]
+
+[node name="ShopStall" type="VSplitContainer"]
+z_index = 4
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.5
+offset_top = -23.0
+offset_right = 30.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+split_offset = 32
+drag_area_offset = 7
+
+[node name="Cost" type="Label" parent="."]
+z_index = 1
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+text = " Cost: 5 "
+label_settings = SubResource("LabelSettings_xoh7t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+texture = ExtResource("1_8j20b")
+centered = false
+offset = Vector2(16, -32)
+
+[node name="StallBackground" type="Sprite2D" parent="."]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
+texture_filter = 1
+position = Vector2(0, -8)
+scale = Vector2(2, 2)
+texture = ExtResource("2_xoh7t")
+centered = false
+offset = Vector2(0, -16)
