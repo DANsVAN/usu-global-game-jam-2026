@@ -23,8 +23,12 @@ public partial class Pawn : Node2D
 	}
 	public override void _Ready()
 	{
-	}
 
+	}
+	public void init_data(bool is_red){
+		isRed = is_red;
+	}
+	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
