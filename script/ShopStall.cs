@@ -16,21 +16,15 @@ bool MouseEntered = false;
 
 
 
-			private void OnMouseEntered()
-			{
+	private void OnMouseEntered()
+	{
+		MouseEntered = true;
+	}
 
-
-				MouseEntered = true;
-
-			}
-
-			private void OnMouseExited()
-			{
-
-
-				MouseEntered = false;
-
-			}
+	private void OnMouseExited()
+	{
+		MouseEntered = false;
+	}
 
 	public void updateBtn()
 	{
@@ -39,15 +33,15 @@ bool MouseEntered = false;
 	}
 	public override void _Ready()
 	{
-			myButton = GetNode<TextureButton>("TextureButton");
-			
-			shop = GetParent() as Shop;
-			gameManager = shop.GetParent() as GameManager;
-			
-			// Connect the signals to local functions
-			myButton.MouseEntered += OnMouseEntered;
-			myButton.MouseExited += OnMouseExited;
-			myButton.SelfModulate = Colors.Black;
+		myButton = GetNode<TextureButton>("TextureButton");
+		
+		shop = GetParent() as Shop;
+		gameManager = shop.GetParent() as GameManager;
+		
+		// Connect the signals to local functions
+		myButton.MouseEntered += OnMouseEntered;
+		myButton.MouseExited += OnMouseExited;
+		myButton.SelfModulate = Colors.Black;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
