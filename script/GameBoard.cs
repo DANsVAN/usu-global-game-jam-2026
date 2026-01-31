@@ -45,24 +45,52 @@ public partial class GameBoard : TileMapLayer
 		for ( int col = 0; col < 8;  col ++){
 			for (int row = 0; row < 16; row ++)
 			{
-				Piece pice = gameState[row,col];
-				if (pice is Piece)
-				{	
-					int[] next_spot = new int[2];
-					next_spot[0] = (row+pice.get_move()[0]);
-					next_spot[1] = (col+pice.get_move()[1]);
-					if (next_spot[0] < 16 && next_spot[0] >= 0 && next_spot[1] < 8 && next_spot[1] >= 0 ){
-						if (!(gameState[next_spot[0],next_spot[1]] is Piece) && pice.can_move){
+				// Piece pice = gameState[row,col];
+				// if (pice is Piece)
+				// {	
+					// int[] next_spot = new int[2];
+					move_singl_pice(row, col,false);
+					// next_spot[0] = (row+pice.get_move()[0]);
+					// next_spot[1] = (col+pice.get_move()[1]);
+					// if (next_spot[0] < 16 && next_spot[0] >= 0 && next_spot[1] < 8 && next_spot[1] >= 0 ){
+					// 	if (!(gameState[next_spot[0],next_spot[1]] is Piece) && pice.can_move){
+					// 		gameState[next_spot[0],next_spot[1]] = pice;
+					// 		pice.can_move = false;
+					// 		gameState[row,col] = null;
+					// 	}
+					// }
+				// }
+			}
+		}
+		update_pos();
+	}
+	public void move_singl_pice(int row, int col ,bool end_next){
+		Piece pice = gameState[row,col];
+		if (pice is Piece){	
+			int[] next_spot = new int[2];
+			next_spot[0] = (row+pice.get_move()[0]);
+			next_spot[1] = (col+pice.get_move()[1]);
+			if (row < 16 && row >= 0 && col < 8 && col >= 0 ){
+				if (next_spot[0] < 16 && next_spot[0] >= 0 && next_spot[1] < 8 && next_spot[1] >= 0 ){
+					if (pice.can_move){ 
+						if (!(gameState[next_spot[0],next_spot[1]] is Piece)){
 							gameState[next_spot[0],next_spot[1]] = pice;
 							pice.can_move = false;
 							gameState[row,col] = null;
+						}else{
+							if (gameState[next_spot[0],next_spot[1]]is Piece){	
+								if (gameState[next_spot[0],next_spot[1]].can_move ){
+									move_singl_pice(next_spot[0], next_spot[1],false);
+									if (pice.can_move && !end_next) {
+										move_singl_pice(row, col ,true);
+									}
+								}
+							}
 						}
 					}
 				}
 			}
 		}
-	
-		update_pos();
 	}
 	public void update_pos(){
 		for ( int col = 0; col < 8;  col ++){
