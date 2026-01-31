@@ -21,7 +21,8 @@ public partial class Shop : CanvasLayer
 
 
 	public void updateShop(PackedScene[] packedScenes)
-	{
+	{	
+		gameManager.selectedPiceType = null;
 		foreach (ShopStall child in Children)
 		{		
 			PackedScene item = packedScenes[child.id];
@@ -30,6 +31,9 @@ public partial class Shop : CanvasLayer
 			GD.Print(item.Instantiate<Piece>().cost);
 			childCost = child.GetChild(0) as Label;
 			childCost.Text = "Cost: " + item.Instantiate<Piece>().cost;
+			if (child.id == currentTogledId){
+				gameManager.selectedPiceType = item;
+			}
 		}
 	}
 
