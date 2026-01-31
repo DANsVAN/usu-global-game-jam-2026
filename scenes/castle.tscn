@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtio25423p6em"]
+
+[ext_resource type="PackedScene" uid="uid://bi38mejehco2a" path="res://scenes/Piece.tscn" id="1_bly62"]
+[ext_resource type="Texture2D" uid="uid://buqyuhylfcb17" path="res://assets/castle.png" id="2_0ysgy"]
+
+[node name="castle" instance=ExtResource("1_bly62")]
+texture_filter = 1
+cost = 2
+movement = 0
+damage = 0
+HP = 3
+thorns = 1
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_0ysgy")

@@ -8,10 +8,10 @@ public partial class GameBoard : TileMapLayer
 	// Called when the node enters the scene tree for the first time.
 	[Export] public PackedScene pice; // Drag your .tscn here in the Inspector
 
-	public Piece SpawnChild()
+	public Piece SpawnChild(PackedScene pieceScene)
 	{
     	// 1. Instantiate (create a copy of the scene)
-    	Piece instance = pice.Instantiate<Piece>();
+    	Piece instance = pieceScene.Instantiate<Piece>();
 
     	// 2. Add it to the tree
     	AddChild(instance);
@@ -21,16 +21,16 @@ public partial class GameBoard : TileMapLayer
 	{
 		// pawn = GetNode<Pawn>("pawn");
 		gameState = new Piece[16,8];
-		gameState[0,0] = SpawnChild();
-		gameState[0,0].init_data(1);
-		gameState[12,0] = SpawnChild();
-		gameState[12,0].init_data(-1);
-		gameState[4,7] = SpawnChild();
-		gameState[4,7].init_data(-1);
-		gameState[2,2] = SpawnChild();
-		gameState[2,2].init_data(1);
-		gameState[1,0] = SpawnChild();
-		gameState[1,0].init_data(1);
+		// gameState[0,0] = SpawnChild();
+		// gameState[0,0].init_data(1);
+		// gameState[12,0] = SpawnChild();
+		// gameState[12,0].init_data(-1);
+		// gameState[4,7] = SpawnChild();
+		// gameState[4,7].init_data(-1);
+		// gameState[2,2] = SpawnChild();
+		// gameState[2,2].init_data(1);
+		// gameState[1,0] = SpawnChild();
+		// gameState[1,0].init_data(1);
 
 		update_pos();
 	}
@@ -124,6 +124,7 @@ public partial class GameBoard : TileMapLayer
 						if (gameState[atack_spot[0],atack_spot[1]] is Piece){
 							if (gameState[atack_spot[0],atack_spot[1]].move_dir != pice.move_dir){
 								gameState[atack_spot[0],atack_spot[1]].HP -= pice.damage;
+								pice.HP -= gameState[atack_spot[0],atack_spot[1]].thorns;
 							}
 						}
 					}else if(atack_spot[0] < 16 && atack_spot[0] >= -10 && atack_spot[1] < 8 && atack_spot[1] >= 0 ) { //blue is atacked
