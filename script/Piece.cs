@@ -14,6 +14,8 @@ public partial class Piece : Node2D
 	public 	int HP = 1;
 	[Export]
 	public int thorns = 0;
+	[Export]
+	public int add_value = 0;
 	
 	
 	public bool can_move = true;

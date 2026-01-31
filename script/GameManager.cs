@@ -24,10 +24,13 @@ public partial class GameManager : Node2D
 	public bool red_win=false;
 	public bool blue_win=false;
 	
+	public Piece[] next_5_cards;
+	
 	[Export] public PackedScene WorldScene;
 	[Export] public PackedScene pice; // Drag your .tscn here in the Inspector
 	[Export] public PackedScene pawn; // Drag your .tscn here in the Inspector
 	[Export] public PackedScene castle; // Drag your .tscn here in the Inspector
+	[Export] public PackedScene mine; // Drag your .tscn here in the Inspector
 	// Called when the node enters the scene tree for the first time.
 	// public void LoadWorld()
 	// {
@@ -98,10 +101,11 @@ public partial class GameManager : Node2D
 				atack_time_left -= delta;
 			}else if (!is_red_teame_turn && !is_blue_teame_turn){
 				Board.kill_0_hp();
+				Board.add_value();
 				is_red_teame_turn = false;
 				is_blue_teame_turn = true;
-				blue_teame_money = 5;
-				red_teame_money = 5;
+				blue_teame_money += 5;
+				red_teame_money += 5;
 			}
 			if (blue_teame_hp <= 0 ){
 				red_win = true;
@@ -147,9 +151,8 @@ public partial class GameManager : Node2D
 					int[] next_spot = FindPossibleRowAndCall();
 					if (next_spot[0] < 16 && next_spot[0] >= 8 && next_spot[1] < 8 && next_spot[1] >= 0 ){
 						if (!(Board.gameState[next_spot[0],next_spot[1]] is Piece)){
-							if (red_teame_money >= 1 && selectedPiceType != null){
-								// Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(castle);
-								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(selectedPiceType);
+							if (red_teame_money >= 1){
+								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(mine);
 								Board.gameState[next_spot[0],next_spot[1]].init_data(-1);
 								Board.update_pos();
 								red_teame_money -= Board.gameState[next_spot[0],next_spot[1]].cost;
