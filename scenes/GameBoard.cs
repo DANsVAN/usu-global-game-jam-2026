@@ -1,15 +1,9 @@
 using Godot;
 using System;
 
-public partial class GameManager : Node
+public partial class GameBoard : TileMapLayer
 {
-	[Export] public PackedScene WorldScene;
 	// Called when the node enters the scene tree for the first time.
-	public void LoadWorld()
-	{
-		Node worldInstance = WorldScene.Instantiate();
-		AddChild(worldInstance);
-	}3
 	public override void _Ready()
 	{
 	}
