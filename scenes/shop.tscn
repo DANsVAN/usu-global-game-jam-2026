@@ -19,7 +19,6 @@ offset_bottom = -1.0
 [node name="ShopStall5" parent="." instance=ExtResource("1_lx5au")]
 offset_left = -32.0
 offset_top = -24.0
-offset_right = 29.0
 offset_bottom = -1.0
 
 [node name="ShopStall2" parent="." instance=ExtResource("1_lx5au")]
@@ -29,11 +28,9 @@ offset_right = -67.0
 offset_bottom = -1.0
 
 [node name="ShopStall4" parent="." instance=ExtResource("1_lx5au")]
-anchors_preset = -1
 anchor_left = 0.48100004
 anchor_right = 0.48100004
 offset_left = -202.11206
 offset_top = -24.0
 offset_right = -141.11206
 offset_bottom = -1.0
-drag_area_offset = 700
