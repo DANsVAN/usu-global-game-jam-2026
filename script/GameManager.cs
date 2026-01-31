@@ -8,6 +8,7 @@ public partial class GameManager : Node2D
 	public ColorRect endScreenColor;
 	public Label endScreenText;
 	public PackedScene selectedPiceType;
+	public Shop shop;
 	
 	
 	public bool is_blue_teame_turn = true;
@@ -25,7 +26,8 @@ public partial class GameManager : Node2D
 	public bool red_win=false;
 	public bool blue_win=false;
 	
-	public PackedScene[] next_5_cards;
+	public PackedScene[] next_5_cards = new PackedScene[5];
+	public PackedScene[] all_cards = new PackedScene[5];
 	
 	[Export] public PackedScene WorldScene;
 	[Export] public PackedScene pice; // Drag your .tscn here in the Inspector
@@ -38,6 +40,9 @@ public partial class GameManager : Node2D
 	// 	Node worldInstance = WorldScene.Instantiate();
 	// 	AddChild(worldInstance);
 	// }
+	
+	
+	
 	public void ShowEndScreen(String text)
 	{
 		endScreen.Visible = true;
@@ -73,6 +78,10 @@ public partial class GameManager : Node2D
         Board = GetNode<GameBoard>("gameBoard");
 		endScreenText = endScreen.GetNode<Label>("Label");
 		endScreenColor = endScreen.GetNode<ColorRect>("ColorRect");
+		// shop = GetNode<Shop>("Shop");
+		// 
+		shop = GetChild(2) as Shop;
+		// GD.Print(shop.currentTogledId);
         restart_game();
 		// board = GetNode<TileMapLayer>("gameBoard");
 		
@@ -181,15 +190,21 @@ public partial class GameManager : Node2D
 		endScreen.Visible = false;
 		
 		selectedPiceType = castle;
+		
+		all_cards[0] =  pawn;
+		all_cards[1] =  pawn;
+		all_cards[2] =  pawn;
+		all_cards[3] =  castle;
+		all_cards[4] =  mine;
 		get_5_rand_cards();
 		
 		Board.kill_all();
 	}
 	public PackedScene get_rand_card(){
-		PackedScene[] type = { pawn, pawn, pawn, castle, mine };
+		
 		Random random = new Random();
-		int randomIndex = random.Next(type.Length);
-		PackedScene ran = type[randomIndex];
+		int randomIndex = random.Next(5);
+		PackedScene ran = all_cards[randomIndex];
 		return ran;
 	}
 	public void get_5_rand_cards(){

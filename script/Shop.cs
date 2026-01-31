@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 public partial class Shop : CanvasLayer
 {
+	public GameManager gameManager;
+	public int waf = 500;
 	public int currentTogledId;
 	public List<ShopStall> Children => GetChildren().OfType<ShopStall>().ToList();
 	public Label childCost;
@@ -18,12 +20,16 @@ public partial class Shop : CanvasLayer
 	// Called when the node enters the scene tree for the first time.
 
 
-	void updateShop(PackedScene[] packedScenes)
+	public void updateShop(PackedScene[] packedScenes)
 	{
 		foreach (ShopStall child in Children)
-		{
+		{		
+			PackedScene item = packedScenes[child.id];
+			GD.Print(item);
+			GD.Print(child.id);
+			GD.Print(item.Instantiate<Piece>().cost);
 			childCost = child.GetChild(0) as Label;
-			childCost.Text = "Cost: " + packedScenes[child.id].Instantiate<Piece>().cost;
+			childCost.Text = "Cost: " + item.Instantiate<Piece>().cost;
 		}
 	}
 
@@ -35,20 +41,23 @@ public partial class Shop : CanvasLayer
             child.id = idCounter;
 			idCounter ++;
         }
+        gameManager = GetParent() as GameManager;
+        
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		foreach (ShopStall child in Children)
+		{
+			if(child.isToggled)
 			{
-				if(child.isToggled)
+				if(child.id != currentTogledId)
 				{
-					if(child.id != currentTogledId)
-					{
-						child.isToggled = !child.isToggled ;
-					}
+					child.isToggled = !child.isToggled ;
 				}
 			}
+		}
+        updateShop(gameManager.next_5_cards);
 	}
 }
