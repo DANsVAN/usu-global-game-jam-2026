@@ -3,6 +3,7 @@ using System;
 
 public partial class GameBoard : TileMapLayer
 {
+	public GameManager gamemanger; 
 	public Piece[,] gameState;
 	// Pawn pawn;
 	// Called when the node enters the scene tree for the first time.
@@ -44,6 +45,10 @@ public partial class GameBoard : TileMapLayer
 		move_all_pices();
 		do_attacks();
 		update_pos();
+		if (gamemanger.game_is_over)
+		{
+			gamemanger.restart_game();
+		}
 	}
 	public void move_all_pices(){
 		for ( int col = 0; col < 8;  col ++){
@@ -112,7 +117,8 @@ public partial class GameBoard : TileMapLayer
 		}
 	}
 	public void do_attacks(){
-		GameManager parent = GetParent<GameManager>();
+		gamemanger = GetParent<GameManager>();
+		GameManager parent = gamemanger;
 		for ( int col = 0; col < 8;  col ++){
 			for (int row = 0; row < 16; row ++){
 				Piece pice = gameState[row,col];
