@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Pawn : Node2D
+public partial class Piece : Node2D
 {
 	public int movement = 1;
 	public bool isRed;

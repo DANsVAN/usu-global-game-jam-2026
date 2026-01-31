@@ -3,15 +3,15 @@ using System;
 
 public partial class GameBoard : TileMapLayer
 {
-	Pawn[,] gameState;
+	Piece[,] gameState;
 	// Pawn pawn;
 	// Called when the node enters the scene tree for the first time.
 	[Export] public PackedScene pice; // Drag your .tscn here in the Inspector
 
-	public Pawn SpawnChild()
+	public Piece SpawnChild()
 	{
     	// 1. Instantiate (create a copy of the scene)
-    	Pawn instance = pice.Instantiate<Pawn>();
+    	Piece instance = pice.Instantiate<Piece>();
 
     	// 2. Add it to the tree
     	AddChild(instance);
@@ -20,7 +20,7 @@ public partial class GameBoard : TileMapLayer
 	public override void _Ready()
 	{
 		// pawn = GetNode<Pawn>("pawn");
-		gameState = new Pawn[16,8];
+		gameState = new Piece[16,8];
 		gameState[0,0] = SpawnChild();
 		gameState[0,0].init_data(true);
 		gameState[1,1] = SpawnChild();
@@ -47,10 +47,10 @@ public partial class GameBoard : TileMapLayer
 			{
 				GD.Print(" --------" );
 				GD.Print(row + " " + col);
-				Pawn pice = gameState[row,col];
+				Piece pice = gameState[row,col];
 				// pice.SetPos(row * 32f,col * 32f);
 				GD.Print("out");
-				if (pice is Pawn)
+				if (pice is Piece)
 				{
 					GD.Print("in");
 					pice.SetPos(32.0f * row + 16,32.0f * col + 16);

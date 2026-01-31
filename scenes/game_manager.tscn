@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://yurkwuwmqdjf"]
+[gd_scene load_steps=3 format=3 uid="uid://yurkwuwmqdjf"]
 
 [ext_resource type="Script" uid="uid://cqrctvvll00n4" path="res://script/GameManager.cs" id="1_glms7"]
 [ext_resource type="PackedScene" uid="uid://bue352cgnnlcl" path="res://scenes/gameBoard.tscn" id="1_hwd4i"]
-[ext_resource type="PackedScene" uid="uid://s5qa7g7pdklq" path="res://scenes/pawn.tscn" id="3_udu3i"]
 
 [node name="gameManager" type="Node"]
 script = ExtResource("1_glms7")
 
 [node name="gameBoard" parent="." instance=ExtResource("1_hwd4i")]
-pice = ExtResource("3_udu3i")
