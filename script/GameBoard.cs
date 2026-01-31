@@ -42,6 +42,7 @@ public partial class GameBoard : TileMapLayer
 	public void NextStep(){
 		update_can_move();
 		move_all_pices();
+		do_attacks();
 		update_pos();
 	}
 	public void move_all_pices(){
@@ -86,8 +87,8 @@ public partial class GameBoard : TileMapLayer
 		for ( int col = 0; col < 8;  col ++){
 			for (int row = 0; row < 16; row ++)
 			{
-				GD.Print(" --------" );
-				GD.Print(row + " " + col);
+				// GD.Print(" --------" );
+				// GD.Print(row + " " + col);
 				Piece pice = gameState[row,col];
 				// pice.SetPos(row * 32f,col * 32f);
 				if (pice is Piece)
@@ -106,6 +107,58 @@ public partial class GameBoard : TileMapLayer
 				{	
 					pice.can_move = true;
 					pice.tryed_to_move = false;
+				}
+			}
+		}
+	}
+	public void do_attacks(){
+		GameManager parent = GetParent<GameManager>();
+		for ( int col = 0; col < 8;  col ++){
+			for (int row = 0; row < 16; row ++){
+				Piece pice = gameState[row,col];
+				if (pice is Piece){	
+					int[] atack_spot = new int[2];
+					atack_spot[0] = (row+pice.get_atack()[0]);
+					atack_spot[1] = (col+pice.get_atack()[1]);
+					if (atack_spot[0] < 16 && atack_spot[0] >= 0 && atack_spot[1] < 8 && atack_spot[1] >= 0 ){
+						if (gameState[atack_spot[0],atack_spot[1]] is Piece){
+							if (gameState[atack_spot[0],atack_spot[1]].move_dir != pice.move_dir){
+								gameState[atack_spot[0],atack_spot[1]].HP -= pice.damage;
+							}
+						}
+					}else if(atack_spot[0] < 16 && atack_spot[0] >= -10 && atack_spot[1] < 8 && atack_spot[1] >= 0 ) { //blue is atacked
+						parent.blue_teame_hp -= pice.damage;
+						pice.HP -= 1;
+					}else if(atack_spot[0] < 26 && atack_spot[0] >= 0 && atack_spot[1] < 8 && atack_spot[1] >= 0 ) { //red is atacked
+						parent.red_teame_hp -= pice.damage;
+						pice.HP -= 1;
+					}
+				}
+			}
+		}
+	}
+	public void kill_0_hp(){
+		for ( int col = 0; col < 8;  col ++){
+			for (int row = 0; row < 16; row ++){
+				Piece pice = gameState[row,col];
+				if (pice is Piece){
+					if (pice.HP <= 0) {
+						// GD.Print("0 HP");
+						pice.QueueFree();
+						gameState[row,col] = null;
+					}
+				}	
+			}
+		}
+	}
+	
+	public void kill_all(){
+		for ( int col = 0; col < 8;  col ++){
+			for (int row = 0; row < 16; row ++){
+				Piece pice = gameState[row,col];
+				if (pice is Piece){
+					pice.QueueFree();
+					gameState[row,col] = null;
 				}
 			}
 		}

@@ -51,7 +51,11 @@ public partial class Piece : Node2D
 	}
 	public int[] get_move(){
 		int[] next_spot = {1*move_dir, 0};
-		return next_spot ;
+		return next_spot;
+	}
+	public int[] get_atack(){
+		int[] next_spot = {1*move_dir, 0};
+		return next_spot;
 	}
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
