@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://w7xpj54uuyl2"]
 
 [ext_resource type="Texture2D" uid="uid://1vta0xrnmbad" path="res://assets/Tile_Bace.png" id="1_wipo8"]
-[ext_resource type="Script" uid="uid://dc03cc0a7648l" path="res://scenes/GameBoard.cs" id="2_p3fcv"]
+[ext_resource type="Script" uid="uid://dc03cc0a7648l" path="res://script/GameBoard.cs" id="2_p3fcv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_glms7"]
 resource_name = "tile"
