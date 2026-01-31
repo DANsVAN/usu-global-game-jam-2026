@@ -7,6 +7,7 @@ public partial class Piece : Node2D
 	public int move_dir = 1;
 	public	int damage = 1;
 	public 	int HP = 1;
+	public bool can_move = true;
 	// Called when the node enters the scene tree for the first time.
 
 	public void SetPos(float positionX, float positionY)
@@ -27,6 +28,10 @@ public partial class Piece : Node2D
 	}
 	public void init_data(int m_dir){
 		move_dir = m_dir;
+	}
+	public int[] get_move(){
+		int[] next_spot = {1*move_dir, 0};
+		return next_spot ;
 	}
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
