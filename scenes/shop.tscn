@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbaedecgvrd5c"]
+[gd_scene load_steps=3 format=3 uid="uid://bbaedecgvrd5c"]
 
 [ext_resource type="PackedScene" uid="uid://cswp65kcfcv16" path="res://scenes/shop_stall.tscn" id="1_lx5au"]
+[ext_resource type="Script" uid="uid://bsxtgtutrkkw4" path="res://script/Shop.cs" id="1_xfvoa"]
 
 [node name="Shop" type="CanvasLayer"]
+script = ExtResource("1_xfvoa")
 
 [node name="ShopStall" parent="." instance=ExtResource("1_lx5au")]
 offset_left = 160.0

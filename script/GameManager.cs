@@ -7,6 +7,7 @@ public partial class GameManager : Node2D
 	public EndScreen endScreen;
 	public ColorRect endScreenColor;
 	public Label endScreenText;
+	public PackedScene selectedPiceType = null;
 	
 	public bool is_blue_teame_turn = true;
 	public int blue_teame_money = 5;
@@ -130,8 +131,9 @@ public partial class GameManager : Node2D
 					int[] next_spot = FindPossibleRowAndCall();
 					if (next_spot[0] < 8 && next_spot[0] >= 0 && next_spot[1] < 8 && next_spot[1] >= 0 ){
 						if (!(Board.gameState[next_spot[0],next_spot[1]] is Piece)){
-							if (blue_teame_money >= 1){
-								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(pawn);
+							if (blue_teame_money >= 1 && selectedPiceType != null){
+								// Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(pawn);
+								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(selectedPiceType);
 								Board.gameState[next_spot[0],next_spot[1]].init_data(1);
 								Board.update_pos();
 								blue_teame_money -= Board.gameState[next_spot[0],next_spot[1]].cost;
@@ -145,8 +147,9 @@ public partial class GameManager : Node2D
 					int[] next_spot = FindPossibleRowAndCall();
 					if (next_spot[0] < 16 && next_spot[0] >= 8 && next_spot[1] < 8 && next_spot[1] >= 0 ){
 						if (!(Board.gameState[next_spot[0],next_spot[1]] is Piece)){
-							if (red_teame_money >= 1){
-								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(castle);
+							if (red_teame_money >= 1 && selectedPiceType != null){
+								// Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(castle);
+								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(selectedPiceType);
 								Board.gameState[next_spot[0],next_spot[1]].init_data(-1);
 								Board.update_pos();
 								red_teame_money -= Board.gameState[next_spot[0],next_spot[1]].cost;
