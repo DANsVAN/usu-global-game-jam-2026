@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6fwj0j542ota"]
+[gd_scene load_steps=3 format=3 uid="uid://bi38mejehco2a"]
 
 [ext_resource type="Script" path="res://script/Pawn.cs" id="1_bab8k"]
 [ext_resource type="Texture2D" uid="uid://baxndqk0ecato" path="res://assets/Pawn.png" id="2_ccfo0"]

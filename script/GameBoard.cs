@@ -26,6 +26,7 @@ public partial class GameBoard : TileMapLayer
 		gameState[4,7] = SpawnChild();
 		gameState[2,2] = SpawnChild();
 
+		update_pos();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,21 +35,10 @@ public partial class GameBoard : TileMapLayer
 	}
 	public void NextStep()
 	{
-		// int row = 0;
-		// int col = 0;
-		// foreach (Pawn val in gameState)
-		// {
-		// 	val.SetPos(50.0f,50.0f);
-    	// 	GD.Print(val + " ------ ") ; // Prints 1, 2, 3, 4, 5, 6
-		// 	row ++;
-		// 	if(row > 16)
-		// 	{
-		// 		col ++;
-		// 		row = 0;
-		// 	}
-		// 	GD.Print(row + " " + col);
-		// }
-		for ( int col = 0; col < 8;  col ++){
+		update_pos();
+	}
+	public void update_pos(){
+				for ( int col = 0; col < 8;  col ++){
 			for (int row = 0; row < 16; row ++)
 			{
 				GD.Print(" --------" );
