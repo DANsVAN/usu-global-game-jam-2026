@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cswp65kcfcv16"]
 
 [ext_resource type="Texture2D" uid="uid://baxndqk0ecato" path="res://assets/Pawn.png" id="1_8j20b"]
-[ext_resource type="Script" uid="uid://ce8a814323id8" path="res://scenes/ShopStall.cs" id="1_i3cu3"]
+[ext_resource type="Script" uid="uid://djwrlmu55b28y" path="res://script/ShopStall.cs" id="1_i3cu3"]
 [ext_resource type="Texture2D" uid="uid://1vta0xrnmbad" path="res://assets/Tile_Bace.png" id="2_xoh7t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xoh7t"]

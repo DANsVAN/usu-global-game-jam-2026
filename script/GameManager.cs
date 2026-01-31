@@ -4,6 +4,9 @@ using System;
 public partial class GameManager : Node2D
 {
 	public GameBoard Board;
+	public EndScreen endScreen;
+	public ColorRect endScreenColor;
+	public Label endScreenText;
 	
 	public bool is_blue_teame_turn = true;
 	public int blue_teame_money = 5;
@@ -27,6 +30,14 @@ public partial class GameManager : Node2D
 	// 	Node worldInstance = WorldScene.Instantiate();
 	// 	AddChild(worldInstance);
 	// }
+	public void ShowEndScreen(String text)
+	{
+		endScreen.Visible = true;
+		
+		endScreenText.Text = text;
+		endScreenColor.Color = Colors.RoyalBlue;
+		endScreenText.SelfModulate = Colors.Black;
+	}
 	public int[] FindPossibleRowAndCall()
 	{
 		Vector2 mousePos = GetGlobalMousePosition();
@@ -39,7 +50,10 @@ public partial class GameManager : Node2D
 	public override void _Ready()
 	{
         // LoadWorld();
+		endScreen = GetNode<EndScreen>("EndScreen");
         Board = GetNode<GameBoard>("gameBoard");
+		endScreenText = endScreen.GetNode<Label>("Label");
+		endScreenColor = endScreen.GetNode<ColorRect>("ColorRect");
         restart_game();
 		// board = GetNode<TileMapLayer>("gameBoard");
 		
@@ -50,12 +64,15 @@ public partial class GameManager : Node2D
 		if (game_is_over){
 			if (blue_win&&!red_win){ // blue win
 				GD.Print("blue win");
+				ShowEndScreen("blue win");
 			}
 			if (red_win&&!blue_win){ // red win
 				GD.Print("red win");
+				ShowEndScreen("red win");
 			}
 			if (red_win&&blue_win){ // game was a tie
 				GD.Print("game was a tie");
+				ShowEndScreen("game was a tie");
 			}
 			
 			if(Input.IsActionJustPressed("next turn")||(is_red_teame_turn && red_teame_money <= 0)||(is_blue_teame_turn && blue_teame_money <= 0)){
