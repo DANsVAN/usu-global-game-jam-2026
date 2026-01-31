@@ -5,32 +5,43 @@ public partial class ShopStall : Control
 
 {
 	// Called when the node enters the scene tree for the first time.
-
+public bool isToggled = false;
 public TextureButton myButton;
 public GameManager gameManager;
-public CanvasLayer shop;
+public Shop shop;
+public int id;
+
 bool MouseEntered = false;
-		private void OnMouseEntered()
-		{
-			// myButton.SelfModulate  = Colors.Red;
-			GD.Print("Mouse is over the button!");
-			MouseEntered = true;
-			// You could also change the color here:
-			// SelfModulate = Colors.Yellow;
-		}
+		
 
-		private void OnMouseExited()
-		{
-			// myButton.SelfModulate = Colors.Black;
-			GD.Print("Mouse has left the building.");
-			MouseEntered = false;
-			// SelfModulate = Colors.White;
-		}
 
+
+			private void OnMouseEntered()
+			{
+
+
+				MouseEntered = true;
+
+			}
+
+			private void OnMouseExited()
+			{
+
+
+				MouseEntered = false;
+
+			}
+
+	public void updateBtn()
+	{
+		GD.Print("Button was clicked! Id " + id);
+		shop.ShopingStallTogler(isToggled, id);
+	}
 	public override void _Ready()
 	{
 			myButton = GetNode<TextureButton>("TextureButton");
-			shop = GetParent() as CanvasLayer;
+			
+			shop = GetParent() as Shop;
 			gameManager = shop.GetParent() as GameManager;
 			
 			// Connect the signals to local functions
@@ -42,13 +53,17 @@ bool MouseEntered = false;
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		GD.Print("is_blue_teame_turn");
+		// GD.Print("is_blue_teame_turn");
 		if(MouseEntered == true)
 		{
 			myButton.SelfModulate = Colors.Black;
 		}
-		else
+
+		if(isToggled)
 		{
+			myButton.SelfModulate = Colors.Black;
+		}
+		else{
 			if (gameManager.is_blue_teame_turn)
 			{
 				myButton.SelfModulate = Colors.Blue;
@@ -61,8 +76,6 @@ bool MouseEntered = false;
 			{
 				myButton.SelfModulate = Colors.Black;
 			}
-			
-		}
-
+		}					
 	}
 }
