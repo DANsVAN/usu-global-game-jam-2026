@@ -136,7 +136,6 @@ public partial class GameManager : Node2D
 					if (next_spot[0] < 8 && next_spot[0] >= 0 && next_spot[1] < 8 && next_spot[1] >= 0 ){
 						if (!(Board.gameState[next_spot[0],next_spot[1]] is Piece)){
 							if (blue_teame_money >= 1 ){
-								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(pawn);
 								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(selectedPiceType);
 								Board.gameState[next_spot[0],next_spot[1]].init_data(1);
 								Board.update_pos();
@@ -152,7 +151,7 @@ public partial class GameManager : Node2D
 					if (next_spot[0] < 16 && next_spot[0] >= 8 && next_spot[1] < 8 && next_spot[1] >= 0 ){
 						if (!(Board.gameState[next_spot[0],next_spot[1]] is Piece)){
 							if (red_teame_money >= 1){
-								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(mine);
+								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(selectedPiceType);
 								Board.gameState[next_spot[0],next_spot[1]].init_data(-1);
 								Board.update_pos();
 								red_teame_money -= Board.gameState[next_spot[0],next_spot[1]].cost;
