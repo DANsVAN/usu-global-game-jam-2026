@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cswp65kcfcv16"]
+[gd_scene load_steps=6 format=3 uid="uid://cswp65kcfcv16"]
 
 [ext_resource type="Texture2D" uid="uid://baxndqk0ecato" path="res://assets/Pawn.png" id="1_8j20b"]
 [ext_resource type="Script" uid="uid://djwrlmu55b28y" path="res://script/ShopStall.cs" id="1_i3cu3"]
 [ext_resource type="Texture2D" uid="uid://1vta0xrnmbad" path="res://assets/Tile_Bace.png" id="2_xoh7t"]
+[ext_resource type="Script" uid="uid://dhcig2fm4gf0g" path="res://script/TextureButton.cs" id="4_74cl0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xoh7t"]
 
@@ -54,3 +55,6 @@ offset_bottom = 36.0
 texture_normal = ExtResource("2_xoh7t")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("4_74cl0")
+
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_texture_button_pressed"]
