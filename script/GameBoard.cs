@@ -46,6 +46,7 @@ public partial class GameBoard : TileMapLayer
 		do_attacks();
 		add_value();
 		update_pos();
+		gamemanger.get_5_rand_cards();
 		if (gamemanger.game_is_over)
 		{
 			gamemanger.restart_game();

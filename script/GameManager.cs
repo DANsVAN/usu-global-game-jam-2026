@@ -9,6 +9,7 @@ public partial class GameManager : Node2D
 	public Label endScreenText;
 	public PackedScene selectedPiceType;
 	
+	
 	public bool is_blue_teame_turn = true;
 	public int blue_teame_money = 5;
 	public int blue_teame_hp = 10;
@@ -24,7 +25,7 @@ public partial class GameManager : Node2D
 	public bool red_win=false;
 	public bool blue_win=false;
 	
-	public Piece[] next_5_cards;
+	public PackedScene[] next_5_cards;
 	
 	[Export] public PackedScene WorldScene;
 	[Export] public PackedScene pice; // Drag your .tscn here in the Inspector
@@ -135,7 +136,7 @@ public partial class GameManager : Node2D
 					int[] next_spot = FindPossibleRowAndCall();
 					if (next_spot[0] < 8 && next_spot[0] >= 0 && next_spot[1] < 8 && next_spot[1] >= 0 ){
 						if (!(Board.gameState[next_spot[0],next_spot[1]] is Piece)){
-							if (blue_teame_money >= 1 ){
+							if (blue_teame_money >= selectedPiceType.Instantiate<Piece>().cost ){
 								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(selectedPiceType);
 								Board.gameState[next_spot[0],next_spot[1]].init_data(1);
 								Board.update_pos();
@@ -150,7 +151,7 @@ public partial class GameManager : Node2D
 					int[] next_spot = FindPossibleRowAndCall();
 					if (next_spot[0] < 16 && next_spot[0] >= 8 && next_spot[1] < 8 && next_spot[1] >= 0 ){
 						if (!(Board.gameState[next_spot[0],next_spot[1]] is Piece)){
-							if (red_teame_money >= 1){
+							if (red_teame_money >= selectedPiceType.Instantiate<Piece>().cost){
 								Board.gameState[next_spot[0],next_spot[1]] = Board.SpawnChild(selectedPiceType);
 								Board.gameState[next_spot[0],next_spot[1]].init_data(-1);
 								Board.update_pos();
@@ -180,7 +181,22 @@ public partial class GameManager : Node2D
 		endScreen.Visible = false;
 		
 		selectedPiceType = castle;
+		get_5_rand_cards();
 		
 		Board.kill_all();
+	}
+	public PackedScene get_rand_card(){
+		PackedScene[] type = { pawn, pawn, pawn, castle, mine };
+		Random random = new Random();
+		int randomIndex = random.Next(type.Length);
+		PackedScene ran = type[randomIndex];
+		return ran;
+	}
+	public void get_5_rand_cards(){
+		next_5_cards[0] = get_rand_card();
+		next_5_cards[1] = get_rand_card();
+		next_5_cards[2] = get_rand_card();
+		next_5_cards[3] = get_rand_card();
+		next_5_cards[4] = get_rand_card();
 	}
 }
