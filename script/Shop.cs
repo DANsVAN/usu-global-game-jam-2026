@@ -8,7 +8,7 @@ public partial class Shop : CanvasLayer
 {
 	public GameManager gameManager;
 	public int waf = 500;
-	public int currentTogledId;
+	public int currentTogledId = -1;
 	public List<ShopStall> Children => GetChildren().OfType<ShopStall>().ToList();
 	public Label childCost;
 
