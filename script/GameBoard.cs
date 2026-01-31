@@ -8,6 +8,7 @@ public partial class GameBoard : TileMapLayer
 	// Called when the node enters the scene tree for the first time.
 	[Export] public PackedScene pice; // Drag your .tscn here in the Inspector
 
+
 	public Piece SpawnChild()
 	{
     	// 1. Instantiate (create a copy of the scene)
@@ -38,6 +39,7 @@ public partial class GameBoard : TileMapLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+
 	}
 	public void NextStep(){
 		update_can_move();

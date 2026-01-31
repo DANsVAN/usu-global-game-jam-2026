@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GameManager : Node
+public partial class GameManager : Node2D
 {
 	public GameBoard Board;
 	[Export] public PackedScene WorldScene;
@@ -11,6 +11,15 @@ public partial class GameManager : Node
 	// 	Node worldInstance = WorldScene.Instantiate();
 	// 	AddChild(worldInstance);
 	// }
+	public int[] FindPossibleRowAndCall()
+	{
+		Vector2 mousePos = GetGlobalMousePosition();
+		int possibleRow =  (int) mousePos.X / 32;
+		int possibleCol =  (int) mousePos.Y / 32;
+		int [] possibleColAndRow = {possibleRow,possibleCol};
+		return(possibleColAndRow);
+	}
+
 	public override void _Ready()
 	{
         // LoadWorld();
@@ -27,6 +36,8 @@ public partial class GameManager : Node
 			GD.Print("pressed");
 			Board.NextStep();
 		}
+		int[] possibleColAndRow = FindPossibleRowAndCall();
+		GD.Print("row " + possibleColAndRow[0]+ " col " + possibleColAndRow[1]);
 		;
 	}
 }
