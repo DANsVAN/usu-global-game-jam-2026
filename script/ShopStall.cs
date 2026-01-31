@@ -28,7 +28,7 @@ bool MouseEntered = false;
 
 	public void updateBtn()
 	{
-		GD.Print("Button was clicked! Id " + id);
+		// GD.Print("Button was clicked! Id " + id);
 		shop.ShopingStallTogler(isToggled, id);
 	}
 	public override void _Ready()
