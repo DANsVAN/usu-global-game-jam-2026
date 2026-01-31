@@ -8,7 +8,6 @@ public partial class GameBoard : TileMapLayer
 	// Called when the node enters the scene tree for the first time.
 	[Export] public PackedScene pice; // Drag your .tscn here in the Inspector
 
-
 	public Piece SpawnChild()
 	{
     	// 1. Instantiate (create a copy of the scene)
@@ -24,8 +23,8 @@ public partial class GameBoard : TileMapLayer
 		gameState = new Piece[16,8];
 		gameState[0,0] = SpawnChild();
 		gameState[0,0].init_data(1);
-		gameState[1,1] = SpawnChild();
-		gameState[1,1].init_data(-1);
+		gameState[12,0] = SpawnChild();
+		gameState[12,0].init_data(-1);
 		gameState[4,7] = SpawnChild();
 		gameState[4,7].init_data(-1);
 		gameState[2,2] = SpawnChild();
@@ -39,7 +38,6 @@ public partial class GameBoard : TileMapLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-
 	}
 	public void NextStep(){
 		update_can_move();
@@ -69,7 +67,10 @@ public partial class GameBoard : TileMapLayer
 						}else{
 							if (gameState[next_spot[0],next_spot[1]]is Piece){	
 								if (gameState[next_spot[0],next_spot[1]].can_move ){
-									move_singl_pice(next_spot[0], next_spot[1],false);
+									if (!pice.tryed_to_move){
+										pice.tryed_to_move = true;
+										move_singl_pice(next_spot[0], next_spot[1],false);
+									}
 									if (pice.can_move && !end_next) {
 										move_singl_pice(row, col ,true);
 									}
@@ -104,6 +105,7 @@ public partial class GameBoard : TileMapLayer
 				if (pice is Piece)
 				{	
 					pice.can_move = true;
+					pice.tryed_to_move = false;
 				}
 			}
 		}
