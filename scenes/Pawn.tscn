@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://s5qa7g7pdklq"]
+[gd_scene load_steps=3 format=3 uid="uid://c6fwj0j542ota"]
 
-[ext_resource type="Script" uid="uid://ivv65l880dy2" path="res://script/Pawn.cs" id="1_bab8k"]
+[ext_resource type="Script" path="res://script/Pawn.cs" id="1_bab8k"]
 [ext_resource type="Texture2D" uid="uid://baxndqk0ecato" path="res://assets/Pawn.png" id="2_ccfo0"]
 
-[node name="Pawn" type="Node2D"]
+[node name="pawn" type="Node2D"]
 script = ExtResource("1_bab8k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

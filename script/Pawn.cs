@@ -3,11 +3,24 @@ using System;
 
 public partial class Pawn : Node2D
 {
-	int movement = 1;
-	bool isRed;
-	int damage = 1;
-	int HP = 1;
+	public int movement = 1;
+	public bool isRed;
+	public	int damage = 1;
+	public 	int HP = 1;
 	// Called when the node enters the scene tree for the first time.
+
+	public void SetPos(float positionX, float positionY)
+	{
+		// 1. Get current position
+		Vector2 currentPos = Position;
+
+		// 2. Modify only what you need
+		currentPos.X = positionX; 
+		currentPos.Y = positionY; 
+
+		// 3. Re-assign it
+		Position = currentPos;
+	}
 	public override void _Ready()
 	{
 	}
