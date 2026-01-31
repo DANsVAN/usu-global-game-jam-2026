@@ -39,30 +39,17 @@ public partial class GameBoard : TileMapLayer
 	public override void _Process(double delta)
 	{
 	}
-	public void NextStep()
-	{
+	public void NextStep(){
 		update_can_move();
+		move_all_pices();
+		update_pos();
+	}
+	public void move_all_pices(){
 		for ( int col = 0; col < 8;  col ++){
-			for (int row = 0; row < 16; row ++)
-			{
-				// Piece pice = gameState[row,col];
-				// if (pice is Piece)
-				// {	
-					// int[] next_spot = new int[2];
-					move_singl_pice(row, col,false);
-					// next_spot[0] = (row+pice.get_move()[0]);
-					// next_spot[1] = (col+pice.get_move()[1]);
-					// if (next_spot[0] < 16 && next_spot[0] >= 0 && next_spot[1] < 8 && next_spot[1] >= 0 ){
-					// 	if (!(gameState[next_spot[0],next_spot[1]] is Piece) && pice.can_move){
-					// 		gameState[next_spot[0],next_spot[1]] = pice;
-					// 		pice.can_move = false;
-					// 		gameState[row,col] = null;
-					// 	}
-					// }
-				// }
+			for (int row = 0; row < 16; row ++){
+				move_singl_pice(row, col,false);
 			}
 		}
-		update_pos();
 	}
 	public void move_singl_pice(int row, int col ,bool end_next){
 		Piece pice = gameState[row,col];
