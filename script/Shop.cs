@@ -32,7 +32,6 @@ public partial class Shop : CanvasLayer
 			{
 				if(child.isToggled)
 				{
-					GD.Print("!");
 					if(child.id != currentTogledId)
 					{
 						child.isToggled = !child.isToggled ;
