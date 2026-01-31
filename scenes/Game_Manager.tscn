@@ -1,26 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://yurkwuwmqdjf"]
+[gd_scene load_steps=8 format=3 uid="uid://yurkwuwmqdjf"]
 
 [ext_resource type="Script" uid="uid://cqrctvvll00n4" path="res://script/GameManager.cs" id="1_glms7"]
-[ext_resource type="PackedScene" uid="uid://bue352cgnnlcl" path="res://scenes/gameBoard.tscn" id="1_hwd4i"]
-[ext_resource type="PackedScene" uid="uid://3mh1yfkglmsf" path="res://scenes/Hud.tscn" id="3_udu3i"]
-[ext_resource type="PackedScene" uid="uid://bbaedecgvrd5c" path="res://scenes/shop.tscn" id="4_oo155"]
+[ext_resource type="PackedScene" path="res://scenes/gameBoard.tscn" id="1_hwd4i"]
+[ext_resource type="PackedScene" uid="uid://bi38mejehco2a" path="res://scenes/Piece.tscn" id="2_ternb"]
+[ext_resource type="PackedScene" uid="uid://s5qa7g7pdklq" path="res://scenes/pawn.tscn" id="3_jdad8"]
+[ext_resource type="PackedScene" uid="uid://dtio25423p6em" path="res://scenes/castle.tscn" id="3_q8mjp"]
+[ext_resource type="PackedScene" path="res://scenes/Hud.tscn" id="3_udu3i"]
+[ext_resource type="PackedScene" path="res://scenes/shop.tscn" id="4_oo155"]
 [ext_resource type="PackedScene" uid="uid://cgmxdjnpdyjsk" path="res://scenes/End_screen.tscn" id="5_eaq8r"]
+
 
 [node name="gameManager" type="Node2D"]
 script = ExtResource("1_glms7")
 pice = ExtResource("2_ternb")
 pawn = ExtResource("3_jdad8")
 castle = ExtResource("3_q8mjp")
-
 [node name="gameBoard" parent="." instance=ExtResource("1_hwd4i")]
-
 [node name="Camera2D" type="Camera2D" parent="gameBoard"]
 offset = Vector2(256, 128)
 zoom = Vector2(2, 2)
-
 [node name="Hud" parent="." instance=ExtResource("3_udu3i")]
 
 [node name="Shop" parent="." instance=ExtResource("4_oo155")]
-
 [node name="EndScreen" parent="." instance=ExtResource("5_eaq8r")]
 visible = false
