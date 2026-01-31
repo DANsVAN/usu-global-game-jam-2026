@@ -38,7 +38,18 @@ public partial class GameManager : Node2D
 		endScreen.Visible = true;
 		
 		endScreenText.Text = text;
-		endScreenColor.Color = Colors.RoyalBlue;
+		if(text == "Blue Win Press Space To Play Again")
+		{
+			endScreenColor.Color =new Color(0.0f, 0.0f, 1.0f, 1.0f);
+		}
+		else if (text == "Red Win Press Space To Play Again")
+		{
+			endScreenColor.Color =new Color(1.0f, 0.0f, 0.0f, 1.0f);
+		}
+		else if (text == "Game Was A Tie Press Space To Play Again")
+		{
+			endScreenColor.Color =new Color(0.0f, 0.0f, 0.0f, 1.0f);
+		}
 		endScreenText.SelfModulate = Colors.Black;
 	}
 	public int[] FindPossibleRowAndCall()
@@ -66,16 +77,16 @@ public partial class GameManager : Node2D
 	public override void _Process(double delta){
 		if (game_is_over){
 			if (blue_win&&!red_win){ // blue win
-				GD.Print("blue win");
-				ShowEndScreen("blue win");
+				GD.Print("Blue Win Press Space To Play Again");
+				ShowEndScreen("Blue Win Press Space To Play Again");
 			}
 			if (red_win&&!blue_win){ // red win
-				GD.Print("red win");
-				ShowEndScreen("red win");
+				GD.Print("Red Win Press Space To Play Again");
+				ShowEndScreen("Red Win Press Space To Play Again");
 			}
 			if (red_win&&blue_win){ // game was a tie
-				GD.Print("game was a tie");
-				ShowEndScreen("game was a tie");
+				GD.Print("Game Was A Tie Press Space To Play Again");
+				ShowEndScreen("Game Was A Tie Press Space To Play Again");
 			}
 			
 			if(Input.IsActionJustPressed("next turn")||(is_red_teame_turn && red_teame_money <= 0)||(is_blue_teame_turn && blue_teame_money <= 0)){
@@ -161,6 +172,7 @@ public partial class GameManager : Node2D
 		game_is_over=false;
 		red_win=false;
 		blue_win=false;
+		endScreen.Visible = false;
 		
 		Board.kill_all();
 	}
