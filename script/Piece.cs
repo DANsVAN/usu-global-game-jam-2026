@@ -4,7 +4,7 @@ using System;
 public partial class Piece : Node2D
 {
 	public int movement = 1;
-	public bool isRed;
+	public int move_dir = 1;
 	public	int damage = 1;
 	public 	int HP = 1;
 	// Called when the node enters the scene tree for the first time.
@@ -25,8 +25,8 @@ public partial class Piece : Node2D
 	{
 
 	}
-	public void init_data(bool is_red){
-		isRed = is_red;
+	public void init_data(int m_dir){
+		move_dir = m_dir;
 	}
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

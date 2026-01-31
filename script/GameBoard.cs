@@ -22,13 +22,13 @@ public partial class GameBoard : TileMapLayer
 		// pawn = GetNode<Pawn>("pawn");
 		gameState = new Piece[16,8];
 		gameState[0,0] = SpawnChild();
-		gameState[0,0].init_data(true);
+		gameState[0,0].init_data(1);
 		gameState[1,1] = SpawnChild();
-		gameState[1,1].init_data(true);
+		gameState[1,1].init_data(-1);
 		gameState[4,7] = SpawnChild();
-		gameState[4,7].init_data(false);
+		gameState[4,7].init_data(-1);
 		gameState[2,2] = SpawnChild();
-		gameState[2,2].init_data(false);
+		gameState[2,2].init_data(1);
 
 		update_pos();
 	}
