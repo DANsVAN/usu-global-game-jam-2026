@@ -3,7 +3,7 @@ using System;
 
 public partial class GameBoard : TileMapLayer
 {
-	Piece[,] gameState;
+	public Piece[,] gameState;
 	// Pawn pawn;
 	// Called when the node enters the scene tree for the first time.
 	[Export] public PackedScene pice; // Drag your .tscn here in the Inspector
