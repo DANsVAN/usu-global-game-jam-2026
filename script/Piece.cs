@@ -2,7 +2,8 @@ using Godot;
 using System;
 
 public partial class Piece : Node2D
-{
+{	
+	public int cost = 1;
 	public int movement = 1;
 	public int move_dir = 1;
 	public	int damage = 1;
