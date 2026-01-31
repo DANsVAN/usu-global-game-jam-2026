@@ -10,6 +10,17 @@ public partial class Piece : Node2D
 	public bool can_move = true;
 	// Called when the node enters the scene tree for the first time.
 
+
+	public void MoveOneHalfSec(Vector2 targetPos)
+	{
+		Tween tween = GetTree().CreateTween();
+		
+		// SetTrans(Linear) ensures there is no "acceleration" or "easing"
+		tween.SetTrans(Tween.TransitionType.Linear);
+		
+		// This will ALWAYS take 1.0 seconds, no matter how far away targetPos is
+		tween.TweenProperty(this, "position", targetPos, 0.5f);
+	}
 	public void SetPos(float positionX, float positionY)
 	{
 		// 1. Get current position
@@ -20,7 +31,8 @@ public partial class Piece : Node2D
 		currentPos.Y = positionY; 
 
 		// 3. Re-assign it
-		Position = currentPos;
+		MoveOneHalfSec(currentPos);
+		// Position = currentPos;
 	}
 	public override void _Ready()
 	{
