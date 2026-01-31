@@ -8,6 +8,7 @@ public partial class Shop : CanvasLayer
 {
 	public int currentTogledId;
 	public List<ShopStall> Children => GetChildren().OfType<ShopStall>().ToList();
+	public Label childCost;
 
 	public void ShopingStallTogler(bool toggle, int id)
 	{
@@ -15,6 +16,17 @@ public partial class Shop : CanvasLayer
 		Children[id].isToggled = !Children[id].isToggled;
 	}
 	// Called when the node enters the scene tree for the first time.
+
+
+	void updateShop(PackedScene[] packedScenes)
+	{
+		foreach (ShopStall child in Children)
+		{
+			childCost = child.GetChild(0) as Label;
+			childCost.Text = "Cost: " + packedScenes[child.id].Instantiate<Piece>().cost;
+		}
+	}
+
 	public override void _Ready()
 	{
 		int idCounter = 0;
